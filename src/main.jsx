@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/routes/App.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -6,8 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Bag from "./components/routes/Bag.jsx";
 import Home from "./components/routes/Home.jsx";
 import { Provider } from "react-redux";
-import Myntrastore from "./components/store/index.js";
-
 import Wishlist from "./components/Wishlist.jsx";
 import Profile from "./components/Profile.jsx";
 import Mens from "./components/Mens.jsx";
@@ -17,8 +15,12 @@ import Decor from "./components/Decor.jsx";
 import Beauty from "./components/Beauty.jsx";
 import SearchResult from "./components/SearchResult.jsx";
 import Details from "./components/Details.jsx";
+import Myntrastore from "./components/store/index.js";
 import "./index.css";
+import { DataProvider } from "./components/Data/DataContext.jsx";
+
 const router = createBrowserRouter([
+ 
   {
    
     path: "/",
@@ -41,9 +43,11 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={Myntrastore}>
-    <RouterProvider router={router} />
-    </Provider>
+     <Provider store={Myntrastore}  >
+ <DataProvider>
+    <RouterProvider router={router}  />
+  </DataProvider>
+  </Provider>
   
   </React.StrictMode>
 );

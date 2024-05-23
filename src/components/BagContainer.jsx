@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 import BagSummary from "./BagSummary";
 import Cart from "./Cart";
+import { DataContext } from "./Data/DataContext";
+import { useContext } from "react";
 const BagContainer = () =>{
+  const {data} = useContext(DataContext)
     const Bagitm = useSelector((store) => store.Bag);
-    const items = useSelector((store) => store.items);
-    const Finalitems = items.filter((item) => {
+    const Finalitems = data.filter((item) => {
       const itemIndex = Bagitm.indexOf(item.id);
       return itemIndex >= 0;
     });

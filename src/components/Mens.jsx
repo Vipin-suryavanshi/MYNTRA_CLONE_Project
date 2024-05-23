@@ -1,8 +1,14 @@
 import { useSelector } from "react-redux";
 import HomeItems from "./HomeItems"
+import { DataContext } from "./Data/DataContext";
+import { useContext } from "react";
 const Mens=()=>{
   {   window.scrollTo(0, 0)}
-    const items = useSelector(store => store.Mens);
+  const {data} = useContext(DataContext)
+
+    const items = data.filter((elem)=>{
+      return elem.category.includes("Men") 
+    })
   
    return(
     <main>

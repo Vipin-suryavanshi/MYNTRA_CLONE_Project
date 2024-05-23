@@ -21,7 +21,6 @@ const Header =()=>{
 
   const handleClick = () => {
     // 👇️ toggle isActive state on click
-
     setIsActive(current => !current);
 
     

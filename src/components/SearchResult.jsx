@@ -1,21 +1,24 @@
 import React from "react";
-import {  useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import HomeItems from "./HomeItems";
+import { DataContext } from "./Data/DataContext";
+import { useContext } from "react";
+
+
 const SearchResult =()=>{
-  {window.scrollTo(0, 0)}4
+  const {data} = useContext(DataContext)
 
+  {window.scrollTo(0, 0)}
 
-  const Search = useSelector((store)=> store.Search_Res)
   const { query } = useParams();
    var modQuery = query.charAt(0).toUpperCase() + query.slice(1);
 
-   const filteredResults = Search.filter((element) => {
+   const filteredResults = data.filter((element) => {
     return element.item_name.includes(modQuery);
     })
   return(
     
-    <main>
+   <main>
     <div className="All-items">
       {filteredResults.length === 0 ? (
         <>

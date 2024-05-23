@@ -1,14 +1,17 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { DataContext } from "./Data/DataContext";
+import { useContext } from "react";
 const Cart =()=>{
+  const {data} = useContext(DataContext)
   const Bag = useSelector(store => store.Bag);
-  const items = useSelector((store) => store.items);
-  const Finalitems = items.filter((item) => {
+  // const items = useSelector((store) => store.items);
+  const Finalitems = data.filter((item) => {
     const itemIndex = Bag.indexOf(item.id);
     return itemIndex >= 0;
   });
-
+console.log("check local");
+console.log(localStorage.getItem("id"));
   const Convenance_fees = 99;
   let Total_item = Bag.length
   let Total_MRP = 0;

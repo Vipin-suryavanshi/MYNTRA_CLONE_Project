@@ -30,10 +30,10 @@ return(
 
     <div className="disable-icon">
       <RxCross1 className="cross-icon" onClick={RemoveItm}/>
-    </div>
-    </>
-    
+ </div>
 
+
+    </>
 )
 }
 export default BagSummary;

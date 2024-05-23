@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux";
 import HomeItems from "../HomeItems";
+import { useContext } from "react";
+import { DataContext } from "../Data/DataContext";
+
 
 const Home=()=>{
-    const items = useSelector(store => store.items);
-    // console.log("got items",items)
+  const {data} = useContext(DataContext)
+  console.log("useContext checking data");
+  console.log(data);
    return(
     <main>
     <div className="All-items">
-      {items.map(item=><HomeItems item={item} key={item.id}></HomeItems>)}
+      {data.map(item=><HomeItems item={item} key={item.id}></HomeItems>)}
     </div>
   </main>
  )

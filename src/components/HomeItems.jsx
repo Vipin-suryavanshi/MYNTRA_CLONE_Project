@@ -3,10 +3,6 @@ import { BagActions } from "./store/BagSlice";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { current } from "@reduxjs/toolkit";
-
-
-
 
 const HomeItems = ({ item }) => {
  const navigate = useNavigate();
@@ -17,7 +13,13 @@ const HomeItems = ({ item }) => {
 
   const HandleClicked = () => {
     dispatch(BagActions.AddToBag(item.id));
-  };
+  }
+
+  // const HandleClicked = () => {
+  //   localStorage.setItem("id", item.id)
+  //   console.log(localStorage.getItem("id"));
+  // };
+
 
   const HandleRemove = () => {
     dispatch(BagActions.DeleteToBag(item.id));
@@ -26,12 +28,10 @@ const HomeItems = ({ item }) => {
 
  const DetailSection=(item)=>{
   if(item){
-
     navigate(`/Detail/:${item.company}`, {state:{item}})
   }
 
 }
-
   return (
     <div key={item.id} className="list">
       <div className="wrapper"  onClick={()=>(DetailSection(item))}  >
