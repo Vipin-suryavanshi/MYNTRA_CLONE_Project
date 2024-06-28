@@ -9,7 +9,7 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("https://myntra-backend-i6qv.onrender.com/GetAll", { withCredentials: true })
+      .get("https://data-base-theta.vercel.app/GetAll", { withCredentials: true })
       .then((res) => {
         console.log("Fetched data");
         setData(res.data);
